@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- BOOTSTRAP  -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+  <!-- D3JS  -->
+  <script src="https://d3js.org/d3.v5.js"></script>
+
+  <!-- LOCAL STYLESHEET FOR D3  -->
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  <!-- <link rel="stylesheet" type="text/css" href="../static/css/sidebar.css"> -->
+  <title>PRUEBA</title>
+</head>
+
+<body class="listImages">
+
+  <div class="sidenav">
+    <h5 style="color: aliceblue; text-align: center;font-family:fantasy;">INFORMACION</h5>
+    <a href="http://127.0.0.1:4000/">
+      <ion-icon name="home"></ion-icon>&nbsp;Inicio
+    </a>
+    <a href="http://127.0.0.1:4000/dataset">
+      <ion-icon name="images"></ion-icon> &nbsp;Data Set
+    </a>
+    <a href="http://127.0.0.1:4000/howto">
+      <ion-icon name="analytics"></ion-icon>&nbsp;Modelo
+    </a>
+
+    <br><br>
+    <h5 style="color: aliceblue;text-align: center;">IMAGENES</h5>
+    <a href="http://127.0.0.1:4000/upload-image">
+      <ion-icon name="cloud-upload"></ion-icon>&nbsp;Subir
+    </a>
+    <a href="http://127.0.0.1:4000/images">
+      <ion-icon name="reload-circle"></ion-icon>&nbsp;Analizar
+    </a>
+    <a href="http://127.0.0.1:4000/processed">
+      <ion-icon name="barcode"></ion-icon>&nbsp;Resultados
+    </a>
+
+
+
+  </div>
+
+  <div class="main listImages">
+
+
+    <!-- ENCABEZADO  -->
+
+    <div class="row listImages">
+      <div class="jumbotron jumbotron-fluid col-12">
+        <div class="container">
+          <h1 class="display-4">Imagenes Subida por Usuarios</h1>
+          <p class="lead">A Constinuación de presentan las fotos subidas por usuarios, siéntase libre de analizar las
+            que están disponibles.</p>
+        </div>
+
+
+      </div>
+      <div class="offset-1 col-10">
+
+</div>
+
+
+      <div style="text-align:center" class="col-12 titlesColor">
+        <h4 class="font-weight-light">IMAGENES POR PROCESAR</h4>
+      </div>
+
+
+    </div>
+    <div class="row">
+
+
+
+      <!-- IMAGENES POR ANALIZAR -->
+      <div class="col-12 listPend">
+
+        <div class="row">
+
+          {% for images in data %}
+
+          <div class="col-4 imag">
+            <div class="card mx-auto text-center">
+              <a href="#url"><img style="width:100%; height:10vw; object-fit: cover" class="card-img-top"
+                  src="{{images[1]}}" alt="Sample Title"></a>
+              <div class="card-body">
+                <h6 class="card-title"><span class="fa fa-external-link mr-1">Nombre: {{images[2]}}</span></h6>
+                <h6 class="card-title"><span class="fa fa-external-link mr-1">Pronóstico: {{images[4]}}</span></h6>
+                <!-- <a href="#url">Analizado: {{images.analizado}}</a></h6> -->
+                <button data-toggle="modal" data-target="#exampleModalCenter" id="{{images[0]}}"
+                  onClick="reply_click(this.id)" type="button" class="btn btn-primary">Analizar</button>
+
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Button trigger modal -->
+      <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+  </button> -->
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLongTitle"></h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- <h5 id="nombreanalizado">Nombre:</h5> -->
+              <h5 id="esperado"></h5>
+             
+              <div style="display:block;" class="text-center loading">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+
+              <h5 id="modelo"></h5>
+            </div>
+            <div class="modal-footer">
+              <button  onClick="reset()" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+
+  </div>
+
+
+
+  <script src="../static/js/images.js"></script>
+  <!-- <script src="./js/appFirebase.js"></script> -->
+  <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+
+</body>
+
+
+
+
+
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BOOTSTRAP  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+    <!-- D3JS  -->
+    <script src="https://d3js.org/d3.v5.js"></script>
+
+    <!-- LOCAL STYLESHEET FOR D3  -->
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/sidebar.css"> -->
+    <title>PRUEBA</title>
+</head>
+
+<body class="listImages">
+
+    <div class="sidenav">
+        <h5 style="color: aliceblue; text-align: center;font-family:fantasy;">INFORMACION</h5>
+        <a href="http://127.0.0.1:4000/"><ion-icon name="home"></ion-icon>&nbsp;Inicio</a>
+        
+        <a href="http://127.0.0.1:4000/dataset"><ion-icon name="images"></ion-icon> &nbsp;Data Set</a>
+        <a href="http://127.0.0.1:4000/howto"><ion-icon name="analytics"></ion-icon>&nbsp;Modelo</a>
+        <br><br>
+        <h5 style="color: aliceblue;text-align: center;">IMAGENES</h5>
+        <a href="http://127.0.0.1:4000/upload-image"><ion-icon name="cloud-upload"></ion-icon>&nbsp;Subir</a>
+        <a href="http://127.0.0.1:4000/images"><ion-icon name="reload-circle"></ion-icon>&nbsp;Analizar</a>
+        <a href="http://127.0.0.1:4000/processed"><ion-icon name="barcode"></ion-icon>&nbsp;Resultados</a>
+
+    </div>
+
+    <div class="main listImages">
+
+
+        <!-- ENCABEZADO  -->
+
+        <div  class="row listImages">
+            <div class="jumbotron jumbotron-fluid col-12">
+                <div class="container">
+
+                    <h1 class="display-4">Explicacion de Modelo</h1>
+                    <p class="lead">La clasificación de imágenes es una de las partes más emocionantes de machine learning. La habilidad de las computadoras para reconocer patrones y objetos de imágenes es una increíble herramienta en nuestro poder. Sin embargo, antes de poder aplicar machine learning a las imágenes debemos transformar las imágenes sin procesar a características útiles para nuestros algoritmos de aprendizaje <br>
+                        Utilizamos una dataset de 5,856 imágenes dedicado a la clasificación de radiografías torácicas con y sin neumonía. </p>
+                </div>
+              </div>
+
+
+        </div>
+        <div class="row">
+
+
+          <div class="offset-1 col-10 card mb-3">
+            
+            <div class="card-body">
+              <h5 class="card-title">Primero importaremos todas las librerías necesarias. </h5>
+              <p class="card-text"></p>
+              <img src="/static/model/image001.jpg" class="card-img-top" alt="...">
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+          </div>
+
+          <div class="offset-1 col-10 card mb-3">
+            
+            <div class="card-body">
+              <h5 class="card-title">Es necesario extraer la información, en este caso guardada en nuestro directorio local y determinar las categorías que vamos a clasificar. Utilizamos la librería OpenCV para comenzar el pre procesamiento. Fundamentalmente, las imágenes son información y usando imread convertimos esa información a NumPy array. Esta librería también nos permite cargar la imagen como escala de grises y cambiar el tamaño de nuestras imágenes para mas pre procesamiento.</h5>
+              <p class="card-text"></p>
+              <img src="/static/model/image002.jpg" class="card-img-top" alt="...">
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+          </div>
+
+          <div class="offset-1 col-10 card mb-3">
+            
+            <div class="card-body">
+              <h5 class="card-title">Declaramos como listas vacías lo que serán nuestras variables “X” y “y” de entrenamiento, donde meteremos nuestras imágenes y categorías respectivamente. Usamos la función reshape para determinar la dimensión de nuestras imágenes.</h5>
+              <p class="card-text"></p>
+              <img src="/static/model/image003.jpg" class="card-img-top" alt="...">
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+          </div>
+
+          <div class="offset-1 col-10 card mb-3">
+            
+            <div class="card-body">
+              <h5 class="card-title">Podemos ver un ejemplo de nuestra imagen en proceso e incluso ver nuestra imagen transformada a matriz en la siguiente celda donde cada uno de sus elementos corresponde a un pixel individual y su valor esta mostrado ahí mismo, desde negro (0) a blanco (255). </h5>
+              <p class="card-text"></p>
+              <img src="/static/model/image004.jpg" class="card-img-top" alt="...">
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+          </div>
+
+          <div class="offset-1 col-10 card mb-3">
+            
+            <div class="card-body">
+              <h5 class="card-title">Aplanaremos (flatten) nuestro arreglo multidimensional que contiene la información de la imagen a un vector de 10,000 de largo (100 * 100). Enseguida normalizaremos nuestra información de entrenamiento escalándola a un rango de 0 y 1. 
+                Y por último convertiremos “y_train” a información categórica.
+                </h5>
+              <p class="card-text"></p>
+              <img src="/static/model/image005.jpg" class="card-img-top" alt="...">
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+
+            
+          </div>
+
+          <div class="offset-1 col-10 card mb-3">
+            
+            <div class="card-body">
+              <h5 class="card-title"><strong>Red Neuronal</strong> <br><br>
+                Las redes neuronales convolucionales (ConvNets) han demostrado ser muy efectivas en el ramo de visión por computadora, y aunque es posible utilizar una red neuronal más simple (feedforward naural network) esta no tiene en cuenta de la misma manera la espacialidad de la imagen y tampoco es capaz de detectar un objeto independientemente de en qué parte de la imagen se encuentre. <br><br>
+                <strong>Arquitectura de la Red Neuronal</strong><br><br>
+                Para este proyecto creamos una red neuronal convolucional de una capa usando el modelo secuencial. <br><br>
+                La capa de entrada es la capa convolucional, con función de activación “ReLU” y contiene el input_shape=X_train. <br><br>
+                Agregamos una capa “max pooling” con una ventana de 2x2 que se moverá (striding) por nuestra información mandando el valor máximo de esa ventana a la siguiente capa.
+                Agregamos también una capa de “dropout” para regularizar nuestra red neuronal, esta le da un valor de cero a alguna unidad aleatoria, de esta manera cada lote se enfrenta a una ligeramente diferente arquitectura de la red ayudando asi a que no se sobre entrene. <br><br>
+                Agregamos una capa para aplanar (flatten layer) los datos de entrada (inputs) de nuestra red neuronal convolucional a un formato que pueda ser usado por una red completamente conectada. <br> <br>
+                Nuestra capa oculta es “densa” es decir totalmente conectada y está compuesta por 128 unidades con función de activación ReLU: activation=’relu’. <br> <br>
+                La capa de salida contiene 2 unidades que corresponden al número de clases o categorías que conforman el dataset y que esperamos clasificar con la función de activación “softmax”. <br> <br>
+                Finalmente usamos el método “compile” con un algoritmo de optimización “Adam”, función de perdida “categorical_crossentropy” y métrica de desempeño “accuracy”.
+                
+                </h5>
+              <p class="card-text"></p>
+              <img src="/static/model/image006.jpg" class="card-img-top" alt="...">
+              <img src="/static/model/image007.jpg" class="card-img-top" alt="...">
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+
+            
+          </div>
+
+          <div class="offset-1 col-10 card mb-3">
+            
+            <div class="card-body">
+              <h5 class="card-title">Continuamos a entrenar nuestro modelo durante 2 epocas debido a que gracias a la información recolectada de previos entrenamientos pudimos determinar que después de este tiempo siempre aumentaba la perdida.
+                
+                </h5>
+              <p class="card-text"></p>
+              <img src="/static/model/image008.jpg" class="card-img-top" alt="...">
+              <img src="/static/model/image009.jpg" class="card-img-top" alt="...">
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+
+            
+          </div>
+
+          <div class="offset-1 col-10 card mb-3">
+            
+            <div class="card-body">
+              <h5 class="card-title"><strong>Ejemplo</strong> de evaluación hecha con un modelo de 2 capas ocultas, con “dropout” en cada capa, entrenado durante 10 epocas y con un tamaño de imagen de 250x250.
+                
+                </h5>
+              <p class="card-text"></p>
+              <img style="width:40%" src="/static/model/image010.jpg" class="card-img-top" alt="...">
+              <img style="width:40%"src="/static/model/image011.jpg" class="card-img-top" alt="...">
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+
+            
+          </div>
+
+          
+          <div class="offset-1 col-10 card mb-3">
+            
+            <div class="card-body">
+              <h5 class="card-title">Por ultimo hicimos unas cuantas pruebas usando model.predict en las imágenes de test. Las clases que se esperan son Normal (0) y Pneumonia (1). Las imágenes 0-233 corresponden a la clase Normal y 234-389 de test tienen la etiqueta Pneumonia.
+                
+                </h5>
+              <p class="card-text"></p>
+              <img src="/static/model/image012.jpg" class="card-img-top" alt="...">
+              <!-- <img style="width:40%"src="/static/model/image011.jpg" class="card-img-top" alt="..."> -->
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+
+            
+          </div>
+        </div>
+
+
+
+
+
+    <script src="../static/js/procesado.js"></script>
+    <!-- <script src="./js/appFirebase.js"></script> -->
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+
+</body>
+
+
+
+
+
+</html>

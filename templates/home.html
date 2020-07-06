@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BOOTSTRAP  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"  
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+    <!-- D3JS  -->
+    <script src="https://d3js.org/d3.v5.js"></script>
+
+    <!-- LOCAL STYLESHEET FOR D3  -->
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/sidebar.css">
+    <title>PRUEBA</title>
+
+    <!-- ICONS -->
+
+</head>
+
+<body>
+
+    <div class="sidenav">
+        <h5 style="color: aliceblue; text-align: center;font-family:fantasy;">INFORMACION</h5>
+        <a href="http://127.0.0.1:4000/"><ion-icon name="home"></ion-icon>&nbsp;Inicio</a>
+      
+        <a href="http://127.0.0.1:4000/dataset"><ion-icon name="images"></ion-icon> &nbsp;Data Set</a>
+        <a href="http://127.0.0.1:4000/howto"><ion-icon name="analytics"></ion-icon>&nbsp;Modelo</a>
+        <br><br>
+        <h5 style="color: aliceblue;text-align: center;">IMAGENES</h5>
+        <a href="http://127.0.0.1:4000/upload-image"><ion-icon name="cloud-upload"></ion-icon>&nbsp;Subir</a>
+        <a href="http://127.0.0.1:4000/images"><ion-icon name="reload-circle"></ion-icon>&nbsp;Analizar</a>
+        <a href="http://127.0.0.1:4000/processed"><ion-icon name="barcode"></ion-icon>&nbsp;Resultados</a>
+        
+      
+
+
+
+    </div>
+
+    <div class="main">
+        <div  class="row listImages">
+            <div class="jumbotron jumbotron-fluid col-12">
+                <div class="container">
+
+                    <h1 class="display-4">Problemática y Propuesta de Solución</h1>
+                    <p class="lead">La neumonía ha sido una de las enfermedades fatales y tiene el potencial de provocar graves consecuencias en un corto período de tiempo, debido al flujo de líquido en los pulmones, lo que conduce a ahogamiento. Si las drogas no actúan en el momento adecuado, la neumonía puede causar la muerte. Por lo tanto, el diagnóstico tempranoes un factor clave a lo largo del progreso de la enfermedad.</p>
+                </div>
+              </div>
+
+
+        </div>
+        <div class="row">
+
+
+          <div class="offset-1 col-10 card mb-3">
+            
+            <div class="card-body">
+              <!-- <h5 class="card-title">Primero importaremos todas las librerías necesarias. </h5> -->
+              <p class="card-text"></p>
+              <img style="width:40%;"src="/static/img/NeumoniaExp/image001.jpg" class="card-img-top" alt="...">
+              <img style="width:40%;"src="/static/img/NeumoniaExp/image002.jpg" class="card-img-top" alt="...">
+
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+          </div>
+
+          <div class="offset-1 col-10 card mb-3">
+            
+            <div class="card-body">
+              <h5 srtyle="text-align:justify;"class="card-title">La neumonía ha sido una de las enfermedades fatales y tiene el potencial de provocargraves consecuencias en un corto período de tiempo, debido al flujo de líquido en lospulmones, lo que conduce a ahogamiento. Si las drogas no actúan en el momentoadecuado, la neumonía puede causar la muerte. Por lo tanto, el diagnóstico tempranoes un factor clave a lo largo del progreso de la enfermedad. <br><br> La tasa de letalidad en niños y adultos mayores no tratados con neumonía es alta, aveces alcanza el 20% y la muerte puede ocurrir incluso 3 días después del inicio de la enfermedad. La identificación temprana de la neumonía y el tratamiento adecuado salvan vidas. <br> <br>
+                <img style="width:40%;"src="/static/img/NeumoniaExp/image003.jpg" class="card-img-top" alt="..."> <br>
+                <br> Al iniciar la terapia con antibióticos poco después de la aparición desíntomas como la respiración rápida con tos, la progresión de una infección porneumonía se atenúa. En ausencia de una intervención temprana, la neumonía progresaa un estado en el que incluso los antibióticos intravenosos tienen un impacto limitado,lo que lleva a a las altas tasas de casos hospitalarios y mortalidad. <br><br> De un estimado de 15 millones de ingresos hospitalarios por neumonía severa y muy severa a nivelmundial en 2010, 3 millones murieron, aproximadamente el 19% en un hospital.Comportamiento tardío de búsqueda de atención o pobre acceso a la atención hospitalaria,   o   ambos,   explicaron   el   alto   número   de   casos   de   neumonía   grave observados en los hospitales..</h5>
+              <p class="card-text"></p>
+              
+              <img style="width:40%;"src="/static/img/NeumoniaExp/image004.jpg" class="card-img-top" alt="...">
+
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+          </div>
+
+          <div class="offset-1 col-10 card mb-3">
+            
+            <div class="card-body">
+              <h5 class="card-title">La neumonía es una infección respiratoria crítica que podría poner en peligro la vida sila asistencia médica no se administra en el momento óptimo. Las instalaciones dediagnóstico son caras y no asequibles para las comunidades rurales del mundo en desarrollo. Además, existe una grave escasez de hospitales y médicos en las regiones rurales, lo que hace que la detección temprana y el diagnóstico, una tarea difícil para lamayoría de las personas en las zonas rurales.</h5>
+              <p class="card-text"></p>
+              <img style="width:40%;"src="/static/img/NeumoniaExp/image005.jpg" class="card-img-top" alt="...">
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+          </div>
+
+          <div class="offset-1 col-10 card mb-3">
+            
+            <div class="card-body">
+              <h5 class="card-title">Nuestro modelo se enfoca en el progreso biológico de la neumonía y su detección mediante imágenes de rayos X, resume los estudios realizados para mejorar el nivel de diagnóstico y presenta la metodología y los resultados de una automatización de las imágenes de rayos con base en varios parámetros para detectar la enfermedad enetapas muy tempranas. <br><br> En  este  estudio,  proponemos  nuestra  arquitectura  deeplearning para la tarea de clasificación, que se entrena con imágenes modificadas, através de múltiples pasos de preprocesamiento. Nuestro método de clasificación utiliza redes neuronales convolucionales. Nuestros resultados arrojan una precisión del 81%. </h5>
+              <p class="card-text"></p>
+              <img style="width:40%;"src="/static/img/NeumoniaExp/image006.jpg" class="card-img-top" alt="...">
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+          </div>
+
+          <div class="offset-1 col-10 card mb-3">
+            
+            <div class="card-body">
+              <h5 class="card-title">Después de que un paciente obtiene una imagen de rayos X del tórax, existe la posibilidad   de   largos   períodos   de   espera,   antes   de   reunirse   con   los   médicos interesados, este retraso puede agravar las condiciones de salud de los pacientes conneumonía. <br><br> Nuestro modelo puede ser de gran ayuda para cualquier persona, incluidos bebés y niños. También es conveniente y asequible para los usuarios, ya que les ayuda aahorrar tiempo y dinero. <br><br> El análisis de imágenes de rayos X ayuda a mejorar la precisión de la predicción y brinda confianza a los pacientes, para acercarse a las  instalaciones médicas interesadas para el tratamiento necesario lo antes posible.Nuestro modelo puede ayudar en la batalla contra la neumonía e inducir a la concienciasobre la detección temprana y el tratamiento de la neumonía en cualquier lugar.
+                </h5>
+              <p class="card-text"></p>
+              <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+
+            
+          </div>
+
+         
+
+
+
+
+     
+
+    </div>
+
+
+
+    <script src="../static/js/home.js"></script>
+    <!-- <script src="./js/appFirebase.js"></script> -->
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+</body>
+
+
+
+
+
+</html>
